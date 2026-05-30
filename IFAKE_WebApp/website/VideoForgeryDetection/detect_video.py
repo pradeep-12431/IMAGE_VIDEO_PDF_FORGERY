@@ -3,7 +3,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 import cv2
 import numpy as np
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 #vid_name = input("\nEnter the name of video: ")
 #vid_src = "G:/Video_Forgery_Detection_Using_Machine_Learning/Input_Videos/" + vid_name + ".mp4"
@@ -34,7 +34,13 @@ def detect_video_forgery(vid_src):
     Xtest = np.array(vid)
 
     print("\nPredicting !! ")
-    model = load_model('C://Users//User//ML//Video_Forgery_Detection//ResNet50_Model//forgery_model_me.hdf5')
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model_path = os.path.join(BASE_DIR, "ImageForgeryDetection", "models", "forgery_model_me.hdf5")
+
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model file not found at {model_path}")
+
+    model = load_model(model_path)
     output = model.predict(Xtest)
 
     output = output.reshape((-1))

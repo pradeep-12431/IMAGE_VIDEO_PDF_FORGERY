@@ -4,10 +4,12 @@ import asyncio
 from multiprocessing import Pool
 import numpy as np
 import subprocess
+import shutil
 
-import streamlit as st
+
 import sys
 import os
+from urllib.parse import unquote
 from website.ImageForgeryDetection.FakeImageDetector import FID
 ##from website.videoForgeryDetection.videoFunctions import *
 from django.core.files.storage import FileSystemStorage
@@ -40,7 +42,15 @@ def getMetaData(path):
     global infoDict
     # CODE for metadata starts
     imgPath = path
-    exeProcess = "hachoir-metadata"
+    
+    exeProcess = shutil.which("hachoir-metadata")
+    if exeProcess is None:
+        print("hachoir-metadata not found. Skipping metadata extraction.")
+        return
+    if not imgPath:
+        print("Invalid image path. Skipping metadata.")
+        return
+
     process = subprocess.Popen([exeProcess, imgPath],
                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                universal_newlines=True)
@@ -108,23 +118,24 @@ def runPdf2image(request):
         if inputPdf:
             fs = FileSystemStorage()
             file = fs.save(inputPdf.name, inputPdf)
-            fileurl = fs.url(file)
+            fileurl = fs.path(file)
             inputPdfUrl = '../media/' + inputPdf.name
-            fileurl = os.getcwd() + '/media/' + inputPdf.name
-            images = convert_from_path(fileurl)
+            images = convert_from_path(fileurl, poppler_path="/opt/homebrew/bin")
             imageurl = []
-            pdfImagesResults=[]
+            pdfImagesResults = []
             for i in range(len(images)):
                 # Save pages as images in the pdf
-                images[i].save(fileurl.strip(".pdf") + 'page' + str(i) + '.jpg', 'JPEG')
-                #This list is used to generate table on pdf.html
-                pageName=inputPdf.name.strip(".pdf") + 'page' + str(i) + '.jpg'
+                base_name = os.path.splitext(os.path.basename(fileurl))[0]
+                pageName = f"{base_name}_page_{i}.jpg"
+                save_path = os.path.join(os.getcwd(), "media", pageName)
+                images[i].save(save_path, 'JPEG')
+                # This list is used to generate table on pdf.html
                 imageurl.append('../media/' + pageName)
-                imagefileurl = os.getcwd()  +'/media/'+pageName
+                imagefileurl = os.path.join(os.getcwd(), "media", pageName)
                 res = FID().predict_result(imagefileurl)
                 result = {'type': res[0], 'confidence': res[1]}
                 pdfImagesResults.append(result)
-            res=zip(imageurl,pdfImagesResults)
+            res = zip(imageurl, pdfImagesResults)
 
         return render(request, "pdf.html", {'input_pdf': inputPdfUrl, 'pdf_img': res,})
 
@@ -147,12 +158,14 @@ def runAnalysis(request):
                 if inputImg:
                     fs = FileSystemStorage()
                     file = fs.save(inputImg.name, inputImg)
-                    fileurl =  os.getcwd() +fs.url(file)
+                    fileurl = fs.path(file)
                     inputImageUrl = '../media/' + inputImg.name
             elif inputImageUrl!='':
                 #inputImageUrl = inputImageUrl
-                fileurl = os.getcwd() + '/media/' + os.path.basename(inputImageUrl)
-
+                fileurl = os.path.join(os.getcwd(), 'media', os.path.basename(inputImageUrl))
+            if not fileurl:
+                return render(request, "image.html", {'error': 'No image path found. Please upload again.'})            
+            fileurl = unquote(fileurl)
             getMetaData(fileurl)
             print('fileurl---------------------------',fileurl)
             res = FID().predict_result(fileurl)
@@ -215,11 +228,14 @@ def runVideoAnalysis(request):
             fs = FileSystemStorage()
             file = fs.save(input_video.name, input_video)
             inputVideoUrl = '../media/' + input_video.name
-            fileVideoUrl = os.getcwd() + '/media/' + input_video.name
+            fileVideoUrl = fs.path(file)
             # getProcessingVideo()
             return render(request, "video.html", {'input_video': inputVideoUrl, })
 
     if request.POST.get('detect'):
+        if not fileVideoUrl or not os.path.exists(fileVideoUrl):
+            return render(request, "video.html", {'error': 'Video file not found. Please upload again.'})
+
         properties = get_video_metadata(fileVideoUrl)
         result = detect_video_forgery(fileVideoUrl)
         return render(request, "video.html",

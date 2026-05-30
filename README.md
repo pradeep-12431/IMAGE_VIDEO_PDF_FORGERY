@@ -60,13 +60,4 @@ To run the web application on Windows, Linux, or Mac, follow these steps:
 
 The screenshots show different features of our web application, including the image and video forgery detection functionality, and the ability to upload and view results of detected forgeries.
 
-## Contributors
-- Shraddha Pawar
-- Gaurangi Pradhan
-- Bhavin Goswami
 
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

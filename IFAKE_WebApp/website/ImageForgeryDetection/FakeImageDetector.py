@@ -1,6 +1,6 @@
 import os
 import ctypes
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import numpy as np
 from PIL import Image, ImageChops, ImageEnhance, ImageFilter
 import PIL.ImageQt
@@ -30,7 +30,13 @@ class FID:
       
      
       #model = load_model('C://Users//User//ML//Video_Forgery_Detection//ResNet50_Model//forgery_model_me.hdf5')  #load the trained model 
-      model = load_model('C://Users//User//django_projects//models//proposed_ela_50_casia_fidac.h5')  #load the trained model 
+      
+
+      BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+      model_path = os.path.join(BASE_DIR, "models", "proposed_ela_50_casia_fidac.h5")
+
+      model = load_model(model_path) #load the trained model 
       class_names = ['Forged', 'Authentic']  #classification outputs
       test_image = self.prepare_image(fname)
       test_image = test_image.reshape(-1, 128, 128, 3)
@@ -50,7 +56,10 @@ class FID:
       
    def genMask(self,file_path):
       segmenter=initSegmenter()
-      segmenter.load_weights('C://Users//User//django_projects//models//segmenter_weights.h5')
+      BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+      segmenter_path = os.path.join(BASE_DIR, "models", "segmenter_weights.h5")
+
+      segmenter.load_weights(segmenter_path)
       testimg=self.convert_to_ela_image(file_path,90).resize((256,256))
       testimg=testimg.getchannel('B')
       test=np.array(testimg)/np.max(testimg)
