@@ -61,7 +61,9 @@ To run the web application on Windows, Linux, or Mac, follow these steps:
 <img src="https://raw.githubusercontent.com/shraddhavijay/IFAKE/master/screenshots/videoDetection.png" alt="Image description" width="60%">
 <img src="https://raw.githubusercontent.com/shraddhavijay/IFAKE/master/screenshots/pdfDetection.png" alt="Image description" width="60%">
 
-
+git add .
+git commit -m "Add project prerequisites"
+git push origin master
 
 The screenshots show different features of our web application, including the image and video forgery detection functionality, and the ability to upload and view results of detected forgeries.
 
