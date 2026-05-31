@@ -1,6 +1,6 @@
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
-
+#issue templates
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
