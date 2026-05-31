@@ -1,3 +1,4 @@
 contribution test
 installlations required
 text required
+improved docstrings
