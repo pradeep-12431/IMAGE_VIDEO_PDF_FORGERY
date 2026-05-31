@@ -14,3 +14,4 @@ project deployement
 performance metrics
 document training
 validation checks
+error handling
