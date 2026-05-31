@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/shraddhavijay/IFAKE/master/screenshots/text.gif">
 </p>
-
+updated readme
 <h1 align="center">IFAKE - Image/Video Forgery Detection Application</h1>
 
 This repository contains two main folders:
