@@ -25,3 +25,4 @@ settings
 model evaluation
 responsiveness
 troubleshooting document
+deployement instructions
