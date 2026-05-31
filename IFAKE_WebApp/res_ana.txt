@@ -19,3 +19,4 @@ file formats
 dataset 
 pipeline
 project folder
+faq section
