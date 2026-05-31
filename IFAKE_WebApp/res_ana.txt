@@ -13,3 +13,4 @@ improve test coverage
 project deployement
 performance metrics
 document training
+validation checks
