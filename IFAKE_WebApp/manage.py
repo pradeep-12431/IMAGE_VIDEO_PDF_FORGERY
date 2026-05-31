@@ -24,5 +24,8 @@ def main():
 #rying commits
 #hello
 #hii
+#git add .
+#git commit -m "Improve variable naming consistency"
+#git push origin master
 if __name__ == '__main__':
     main()
