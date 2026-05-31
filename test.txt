@@ -4,3 +4,4 @@ text required
 improved docstrings
 refactored variable names
 remove unused imports
+imroved exception handling
