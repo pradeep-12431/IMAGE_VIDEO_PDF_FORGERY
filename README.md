@@ -3,7 +3,7 @@
   <img src="https://raw.githubusercontent.com/shraddhavijay/IFAKE/master/screenshots/text.gif">
 </p>
 
-add system archetecture
+
 updated screenshots 
 ## Dataset Preparation
 
