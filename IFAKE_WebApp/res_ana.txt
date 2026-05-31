@@ -8,3 +8,4 @@ improve prediction result
 cofidence score 
 test cases
 image detection tests
+pdf detection
