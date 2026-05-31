@@ -4,6 +4,7 @@
 </p>
 updated readme
 add system archetecture
+updated screenshots 
 <h1 align="center">IFAKE - Image/Video Forgery Detection Application</h1>
 
 This repository contains two main folders:
