@@ -10,3 +10,4 @@ test cases
 image detection tests
 pdf detection
 improve test coverage
+project deployement
