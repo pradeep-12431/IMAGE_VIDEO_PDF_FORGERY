@@ -22,9 +22,6 @@ def main():
 #good func
 #evryhing
 #rying commits
-#hello
-#hii
-#git add .
 
 
 
