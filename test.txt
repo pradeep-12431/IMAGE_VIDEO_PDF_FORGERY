@@ -5,3 +5,6 @@ improved docstrings
 refactored variable names
 remove unused imports
 imroved exception handling
+ add 
+commit Add logging support
+push origin master
