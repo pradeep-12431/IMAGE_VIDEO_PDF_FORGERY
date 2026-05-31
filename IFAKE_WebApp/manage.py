@@ -28,9 +28,7 @@ def main():
 #git commit -m "Improve variable naming consistency"
 #git push origin master
 #git add .
-#git commit -m "Remove redundant code blocks"
-#git push origin master
-#MASTER
+
 
 if __name__ == '__main__':
     main()
