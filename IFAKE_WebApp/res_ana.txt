@@ -7,3 +7,4 @@ video uploaded
 improve prediction result
 cofidence score 
 test cases
+image detection tests
