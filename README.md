@@ -65,6 +65,6 @@ git add .
 git commit -m "Add project prerequisites"
 git push origin master
 
-The screenshots show different features of our web application, including the image and video forgery detection functionality, and the ability to upload and view results of detected 
+The screenshots show different features of our web application, including the image and video forgery detection functionality, and the ability to upload and view results of deteCTED
 
 
