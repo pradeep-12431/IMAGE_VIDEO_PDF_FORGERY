@@ -4,7 +4,7 @@
 </p>
 
 
-updated screenshots 
+
 ## Dataset Preparation
 
 The dataset contains image, video, and PDF samples used for forgery detection evaluation.
