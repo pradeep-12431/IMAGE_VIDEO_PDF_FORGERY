@@ -5,6 +5,9 @@
 updated readme
 add system archetecture
 updated screenshots 
+## Dataset Preparation
+
+The dataset contains image, video, and PDF samples used for forgery detection evaluation.
 <h1 align="center">IFAKE - Image/Video Forgery Detection Application</h1>
 
 This repository contains two main folders:
