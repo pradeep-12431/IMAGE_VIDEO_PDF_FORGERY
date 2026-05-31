@@ -8,3 +8,4 @@ imroved exception handling
  add 
 commit Add logging support
 push origin master
+optimized preprocessing
