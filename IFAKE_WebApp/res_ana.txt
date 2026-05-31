@@ -5,3 +5,4 @@ image upload
 added pdf validation
 video uploaded
 improve prediction result
+cofidence score 
