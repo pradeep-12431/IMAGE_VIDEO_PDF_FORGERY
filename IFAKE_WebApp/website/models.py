@@ -3,3 +3,4 @@ from django.db import models
 # Create your models here.
 #this is used for crerating models
 #added example environment
+#improved repository structure
