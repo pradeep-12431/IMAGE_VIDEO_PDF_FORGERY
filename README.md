@@ -63,7 +63,7 @@ To run the web application on Windows, Linux, or Mac, follow these steps:
 
 
 git add .
-git commit -m "git add READ
+git commit -m "git add RE
 g
 
 
