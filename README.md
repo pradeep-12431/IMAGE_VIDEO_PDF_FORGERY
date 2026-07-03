@@ -63,7 +63,8 @@ To run the web application on Windows, Linux, or Mac, follow these steps:
 
 
 git add .
-git commit -m "Validate inp
+git commit -m "Validate 
+
 
 
 
