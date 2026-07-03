@@ -63,9 +63,7 @@ To run the web application on Windows, Linux, or Mac, follow these steps:
 
 
 
-git add .
-git commit -m "Improve backend performance"
-git push origin master
+
 
 
 The screenshots show different features of our web application, including the image and video forgery detection functionality, and the ability to upload and view results of deteCTED
