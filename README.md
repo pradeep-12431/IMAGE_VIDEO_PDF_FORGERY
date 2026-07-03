@@ -65,8 +65,7 @@ To run the web application on Windows, Linux, or Mac, follow these steps:
 git add .
 git commit -m "git add README.md
 git commit -m "Clarify project structure"
-git push origin m
-
+git push 
 
 
 
