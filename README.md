@@ -62,7 +62,7 @@ To run the web application on Windows, Linux, or Mac, follow these steps:
 <img src="https://raw.githubusercontent.com/shraddhavijay/IFAKE/master/screenshots/pdfDetection.png" alt="Image description" width="60%">
 
 git add requirements.txt
-git commit -m 
+git commit 
 
 
 
